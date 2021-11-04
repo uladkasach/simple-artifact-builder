@@ -2,6 +2,7 @@ import { Config } from '../../domain';
 import { addFilesToArtifactContents } from './addFilesToArtifactContents';
 import { defineAllPickedFilesSpecified } from './defineAllPickedFilesSpecified';
 import { defineAllTracedFilesSpecified } from './defineAllTracedFilesSpecified';
+import { reportArtifactContentSizes } from './reportArtifactContentSizes';
 
 export const buildArtifactContents = async ({
   projectRootDirectory,
@@ -30,4 +31,7 @@ export const buildArtifactContents = async ({
     projectRootDirectory,
     relativeFilePaths,
   });
+
+  // and report on the sizes of those files
+  await reportArtifactContentSizes({ projectRootDirectory });
 };
