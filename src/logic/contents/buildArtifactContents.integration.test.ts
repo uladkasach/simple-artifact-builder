@@ -3,14 +3,10 @@ import { UserInputError } from '../UserInputError';
 
 import { TEST_ASSETS_DIRECTORY } from '../__test_assets__/testAssetsDirectory';
 import { buildArtifactContents } from './buildArtifactContents';
-import { clearArtifactDirectory } from './clearArtifactDirectory';
 
 describe('buildArtifactContents', () => {
   it('should be able to build artifact contents for a next.js project using nexts outputted trace files + user server files', async () => {
     const projectRootDirectory = `${TEST_ASSETS_DIRECTORY}/nextjs-mui-project-next-dir-for-building`;
-
-    // make sure the artifact directory doesn't exist yet to run from a clean slate
-    await clearArtifactDirectory({ projectRootDirectory });
 
     // run it
     try {

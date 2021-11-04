@@ -1,5 +1,6 @@
 import { ArtifactConfig } from '../../domain';
 import { addFilesToArtifactContents } from './addFilesToArtifactContents';
+import { clearArtifactDirectory } from './clearArtifactDirectory';
 import { defineAllPickedFilesSpecified } from './defineAllPickedFilesSpecified';
 import { defineAllTracedFilesSpecified } from './defineAllTracedFilesSpecified';
 import { reportArtifactContentSizes } from './reportArtifactContentSizes';
@@ -11,6 +12,9 @@ export const buildArtifactContents = async ({
   projectRootDirectory: string;
   config: ArtifactConfig;
 }) => {
+  // clean up the artifact contents dir to make sure there's no old stuff in there
+  await clearArtifactDirectory({ projectRootDirectory });
+
   // resolve all of the picked files specified
   const pickedFilesSpecified = await defineAllPickedFilesSpecified({
     projectRootDirectory,
