@@ -52,12 +52,13 @@ alternatively, if you're deploying a `Next.JS` project, you may want to use the 
 ```yml
 # artifact.yml
 trace:
-- dist/server/handler.js # trace the dependencies of the handler to include the handler and all the code it depends on
-- .next/**/*.nft.json # use the trace-output files that next.js automatically generates to include all of the dependencies of the .next server
+  - 'dist/server/handler.js' # trace the dependencies of the handler to include the handler and all the code it depends on
+  - '.next/**/*.nft.json' # use the trace-output files that next.js automatically generates to include all of the dependencies of the .next server
+  - '!.next/cache/**/*.nft.json' # dont use the trace-output files from the .next/cache dir though, as they're not actually defined correctly nor needed
 
 pick:
-- .next/**/* # include this whole directory, since the nextjs-server-side-rendering server uses its contents through dynamic imports
-- !.next/cache/**.* # exclude the cache though, since that's only needed while compiling and is very large/heavy
+  - '.next/**/*' # include this whole directory, since the nextjs-server-side-rendering server uses its contents through dynamic imports
+  - '!.next/cache/**/*' # exclude the cache though, since that's only needed while compiling and is very large/heavy
 ```
 
 ### 3. use
