@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.0.0...v1.0.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* **clean:** clean the artifact dir out before building ([53b493f](https://www.github.com/uladkasach/simple-artifact-builder/commit/53b493f013845abed50c5258479b7326c1ca991e))
+
 ## 1.0.0 (2021-11-04)
 
 
