@@ -14,9 +14,9 @@ Easily create deployment artifacts with the minimum set of dependencies required
 * [Table of Contents](#table-of-contents)
 * [Purpose](#purpose)
 * [Usage](#usage)
+* [artifact.yml](#artifactyml)
+* [artifact.yml](#artifactyml-1)
 * [Commands](#commands)
-* [Philosophy](#philosophy)
-* [Declarations](#declarations)
 * [Contribution](#contribution)
 <!-- tocstop -->
 
@@ -29,20 +29,13 @@ Deployment artifacts can easily get out of hand in size when unnecessary depende
 ### 1. install
 
 ```sh
-npm install --save-dev simple-artifact-builder
+npm install --save-dev simple-artifact-builder # install it
+npx simple-artifact-builder help # and test that you can use it
 ```
 
 ### 2. configure
 
-define your `artifact.yml` config file to specify:
-- which files you would like to `trace`, to include them and their dependencies in your artifact
-  - here you can specify just the code that will actually be called and let file tracing figure out the other dependencies that will need to be included
-    - e.g., for an `aws-lambda` handler
-  - here you can also specify existing `.nft.json` trace files from other build processes, in which case we will simply use that trace output and include those dependencies
-    - e.g., for `next.js` support: https://nextjs.org/blog/next-12#output-file-tracing
-- which files you would like to `pick`, to include them explicitly in your artifact
-  - here you can specify any files that would not be picked up by file tracing
-    - e.g., if your code has dynamic imports, file tracing will not be able to determine the dependency on its own
+define your `artifact.yml` config file to specify what files should be included in the artifact with `trace` (to include it and its [traced](https://github.com/vercel/nft) dependencies) or `pick` (to just include that file).
 
 for example, for an aws lambda service, you may use something like this:
 ```yml
@@ -55,6 +48,18 @@ pick:
 - config/*.json # also include the `config` directory, since we dynamically import it
 ```
 
+alternatively, if you're deploying a `Next.JS` project, you may want to use the `.nft.json` trace output files that they already include. for example:
+```yml
+# artifact.yml
+trace:
+- dist/server/handler.js # trace the dependencies of the handler to include the handler and all the code it depends on
+- .next/**/*.nft.json # use the trace-output files that next.js automatically generates to include all of the dependencies of the .next server
+
+pick:
+- .next/**/* # include this whole directory, since the nextjs-server-side-rendering server uses its contents through dynamic imports
+- !.next/cache/**.* # exclude the cache though, since that's only needed while compiling and is very large/heavy
+```
+
 ### 3. use
 
 now that you've configured your project's artifact settings, you can build the artifact.
@@ -63,6 +68,50 @@ for example, build the artifact into a zip file (e.g., for usage with [`serverle
 ```sh
 npx simple-artifact-builder zip
 ```
+
+this will output:
+- `.artifact/contents.zip` - the zipped up artifact, ready for deployment
+- `.artifact/contents` - a directory which hold the contents that were zipped up
+- `.artifact/contents.manifest.json` - a file which lists all of the files included in the contents
+- `.artifact/contents.sizes.json` - a file which defines the sizes of each file included in the contents
+
+# Commands
+<!-- commands -->
+* [`simple-artifact-builder help [COMMAND]`](#simple-artifact-builder-help-command)
+* [`simple-artifact-builder zip`](#simple-artifact-builder-zip)
+
+## `simple-artifact-builder help [COMMAND]`
+
+display help for simple-artifact-builder
+
+```
+USAGE
+  $ simple-artifact-builder help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src/commands/help.ts)_
+
+## `simple-artifact-builder zip`
+
+builds and zips the artifact
+
+```
+USAGE
+  $ simple-artifact-builder zip
+
+OPTIONS
+  -c, --config=config  (required) [default: artifact.yml] path to the artifact config yml
+  -h, --help           show CLI help
+```
+
+_See code: [dist/contract/commands/zip.ts](https://github.com/uladkasach/simple-artifact-builder/blob/v0.0.1/dist/contract/commands/zip.ts)_
+<!-- commandsstop -->
 
 # Contribution
 

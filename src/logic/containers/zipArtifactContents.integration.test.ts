@@ -23,7 +23,14 @@ describe('zipArtifactContents', () => {
       });
       zip.on('ready', () => {
         expect(zip.entriesCount).toBeGreaterThan(10); // should have more than 10, sanity check
-        expect(zip.entries()).toMatchSnapshot();
+        expect(
+          Object.fromEntries(
+            Object.entries(zip.entries()).map(([name, value]) => [
+              name,
+              { ...value, time: '__REDACTED__', attr: '__REDACTED__' },
+            ]),
+          ),
+        ).toMatchSnapshot();
         zip.close(); // close the file once done
         resolve(true); // and end the promise
       });

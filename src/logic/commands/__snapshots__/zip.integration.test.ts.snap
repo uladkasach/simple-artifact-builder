@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`apply should be able to apply for an example project 1`] = `
+Array [
+  Array [
+    "🔎 reading config...",
+  ],
+  Array [
+    "🔨 building artifact...",
+  ],
+  Array [
+    "🗜️  zipping artifact...",
+  ],
+  Array [
+    "🎉 done! [90m(.artifact/contents.zip)[39m",
+  ],
+]
+`;

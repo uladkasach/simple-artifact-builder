@@ -1,7 +1,6 @@
 import archiver from 'archiver';
 import fs from 'fs';
 import { assertThatArtifactContentsWereBuilt } from '../contents/assetThatArtifactContentsWereBuilt';
-import { UserInputError } from '../UserInputError';
 
 /**
  * zips a directory

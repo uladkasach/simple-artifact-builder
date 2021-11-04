@@ -1,9 +1,8 @@
 import { Command, flags } from '@oclif/command';
-import { apply } from '../../logic/commands/apply';
+import { zip } from '../../logic/commands/zip';
 
 export default class Apply extends Command {
-  public static description =
-    "apply fixes to all files which have failed to adhere to any of the project's declared practices and have an automatic fix available.";
+  public static description = 'builds and zips the artifact';
 
   public static flags = {
     help: flags.help({ char: 'h' }),
@@ -20,7 +19,7 @@ export default class Apply extends Command {
     const config = flags.config!;
 
     // define config path
-    const configPath = config.slice(0, 1) === '/' ? config : `${process.cwd()}/${config}`; // if starts with /, consider it as an absolute path
-    await apply({ configPath, });
+    const absoluteConfigPath = config.slice(0, 1) === '/' ? config : `${process.cwd()}/${config}`; // if starts with /, consider it as an absolute path
+    await zip({ absoluteConfigPath });
   }
 }

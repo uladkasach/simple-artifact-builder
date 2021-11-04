@@ -1,0 +1,5 @@
+trace:
+  - dist/handler.js
+
+pick:
+  - config/*.json

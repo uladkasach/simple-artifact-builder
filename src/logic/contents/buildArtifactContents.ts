@@ -1,4 +1,4 @@
-import { Config } from '../../domain';
+import { ArtifactConfig } from '../../domain';
 import { addFilesToArtifactContents } from './addFilesToArtifactContents';
 import { defineAllPickedFilesSpecified } from './defineAllPickedFilesSpecified';
 import { defineAllTracedFilesSpecified } from './defineAllTracedFilesSpecified';
@@ -9,7 +9,7 @@ export const buildArtifactContents = async ({
   config,
 }: {
   projectRootDirectory: string;
-  config: Config;
+  config: ArtifactConfig;
 }) => {
   // resolve all of the picked files specified
   const pickedFilesSpecified = await defineAllPickedFilesSpecified({
