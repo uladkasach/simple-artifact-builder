@@ -42,7 +42,7 @@
     "generate:cli-readme": "npm run build && oclif-dev readme",
     "format": "prettier --parser typescript --write 'src/**/*.ts' --config ./prettier.config.js",
     "build:ts": "tsc -p ./tsconfig.build.json",
-    "build:static-assets": "copyfiles -u 1 src/**/*.js dist/",
+    "build:static-assets": "copyfiles -u 1 src/logic/contents/*.js dist/",
     "build": "rm -rf ./dist && npm run build:ts && npm run build:static-assets",
     "test:types": "tsc --noEmit",
     "test:format": "prettier --parser typescript --check 'src/**/*.ts' --config ./prettier.config.js",
