@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.3](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.1.2...v1.1.3) (2021-11-09)
+
+
+### Bug Fixes
+
+* **pkg:** ensure that the distributed simple-artifact-builder package does not include __test_assets__ ([4b6a21f](https://www.github.com/uladkasach/simple-artifact-builder/commit/4b6a21f036b50ab7f5009e4d177fa50dcf962c04))
+
 ### [1.1.2](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.1.1...v1.1.2) (2021-11-09)
 
 
