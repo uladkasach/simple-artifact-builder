@@ -3,6 +3,7 @@ import { addFilesToArtifactContents } from './addFilesToArtifactContents';
 import { clearArtifactDirectory } from './clearArtifactDirectory';
 import { defineAllPickedFilesSpecified } from './defineAllPickedFilesSpecified';
 import { defineAllTracedFilesSpecified } from './defineAllTracedFilesSpecified';
+import { exposeArtifactContentRunIsolatedUtility } from './exposeArtifactContentRunIsolatedUtility';
 import { reportArtifactContentSizes } from './reportArtifactContentSizes';
 
 export const buildArtifactContents = async ({
@@ -38,4 +39,7 @@ export const buildArtifactContents = async ({
 
   // and report on the sizes of those files
   await reportArtifactContentSizes({ projectRootDirectory });
+
+  // and expose the run-isolated utility
+  await exposeArtifactContentRunIsolatedUtility({ projectRootDirectory });
 };
