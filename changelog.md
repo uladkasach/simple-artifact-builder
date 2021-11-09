@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.1.0...v1.1.1) (2021-11-09)
+
+
+### Bug Fixes
+
+* **run:** expose the run-isolated utility with every build ([db45488](https://www.github.com/uladkasach/simple-artifact-builder/commit/db45488cdf77a4121ecaa8553b66085300b2dcb6))
+
 ## [1.1.0](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.0.1...v1.1.0) (2021-11-09)
 
 
