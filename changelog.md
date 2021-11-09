@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.0.1...v1.1.0) (2021-11-09)
+
+
+### Features
+
+* **run:** enable executing files inside of artifacts with isolated node module imports for testing ([3dc2190](https://www.github.com/uladkasach/simple-artifact-builder/commit/3dc21900cd94af3cbd9e174114984ff8cd8e82a9))
+
 ### [1.0.1](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.0.0...v1.0.1) (2021-11-04)
 
 
