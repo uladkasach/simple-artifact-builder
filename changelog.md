@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.2](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.1.1...v1.1.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* **run:** ensure that static assets are included in published pkg ([9938ba7](https://www.github.com/uladkasach/simple-artifact-builder/commit/9938ba7c8bc3d8c0261ba8c294f0d2f0520a624f))
+
 ### [1.1.1](https://www.github.com/uladkasach/simple-artifact-builder/compare/v1.1.0...v1.1.1) (2021-11-09)
 
 
