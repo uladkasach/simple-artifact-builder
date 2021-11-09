@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { assertThatArtifactContentsWereBuilt } from './assetThatArtifactContentsWereBuilt';
+import { assertThatArtifactContentsWereBuilt } from './assertThatArtifactContentsWereBuilt';
 import prettyBytes from 'pretty-bytes';
 
 const roundToHundredths = (x: number) => Math.round(100 * x) / 100;

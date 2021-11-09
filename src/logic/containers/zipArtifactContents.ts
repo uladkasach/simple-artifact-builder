@@ -1,6 +1,6 @@
 import archiver from 'archiver';
 import fs from 'fs';
-import { assertThatArtifactContentsWereBuilt } from '../contents/assetThatArtifactContentsWereBuilt';
+import { assertThatArtifactContentsWereBuilt } from '../contents/assertThatArtifactContentsWereBuilt';
 
 /**
  * zips a directory
